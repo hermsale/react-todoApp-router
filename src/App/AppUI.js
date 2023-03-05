@@ -9,6 +9,8 @@ import { TodoForm } from "../TodoForm";
 import { Modal } from '../Modal';
 import { TodoLoading } from "../TodoLoading";
 import { TodoError } from "../TodoError";
+import { EmptyTodos } from "../EmptyTodos";
+import { TodoHeader } from "../TodoHeader";
 
 // importamos el TodoContext para usar el Consumer
 import { TodoContext } from "../TodoContext";
@@ -26,35 +28,42 @@ function AppUI() {
         completedTodos,
         openModal, 
         setOpenModal,
+        totalTodos,
+        searchValue, 
+        setSearchValue,
     } = React.useContext(TodoContext);
 
     return (
         <React.Fragment>
           
+          <TodoHeader>
             <TodoCounter
+                completedTodos={completedTodos}
+                totalTodos={totalTodos}
             />
 
-            <TodoSearch            
+            <TodoSearch
+                searchValue={searchValue} 
+                setSearchValue={setSearchValue}            
             />
+          </TodoHeader>
             
-                      <TodoList>
-                            
-                            {loading && <TodoLoading/>}
-                            {error && <TodoError/>}
-                            {(!loading && searchedTodos.length === 0) && <p className="TodoCompleted">¡Crea tu primer Todo!</p>}
-
-                                {searchedTodos.map((todo) => (
-                                    <TodoItem
-                                        key={todo.text}                                       
-                                        text={todo.text}
-                                        completed={todo.completed}
-                                        onComplete={() => toggleCompleteTodo(todo.text)}
-                                        onDelete={() => deleteTodo(todo.text)}
-                                    />
-                                ))
-                            }
-                            { (!loading && completedTodos) ? <p className="TodoCompleted">Tienes Todos para eliminar</p> : <p></p>}  
-                      </TodoList>
+            <TodoList>             
+                {loading && <TodoLoading/>}
+                {error && <TodoError/>}
+                {(!loading && !searchedTodos.length) && <EmptyTodos/>}
+                    {searchedTodos.map((todo) => (
+                        <TodoItem
+                            key={todo.text}                                       
+                            text={todo.text}
+                            completed={todo.completed}
+                            onComplete={() => toggleCompleteTodo(todo.text)}
+                            onDelete={() => deleteTodo(todo.text)}
+                        />
+                    ))
+                }
+                { (!loading && completedTodos) ? <p className="TodoCompleted">Tienes Todo's para eliminar</p> : <p></p>}  
+            </TodoList>
                 
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
                 {

@@ -1,9 +1,7 @@
 import React from 'react';
 import './TodoCounter.css';
-import { TodoContext } from "../TodoContext";
 
-
-function TodoCounter () {
+function TodoCounter ({completedTodos,totalTodos}) {
 
     // Uso de useContext
     // const {
@@ -13,13 +11,9 @@ function TodoCounter () {
 
     return(
         // Opcion de uso de la etiqueta Consumer
-        <TodoContext.Consumer>
-            {value =>(
-                <h2 className='TodoCounter'> Haz completado {value.completedTodos} de {value.totalTodos} TODO's</h2>
+
+                <h2 className='TodoCounter'> Haz completado {completedTodos} de {totalTodos} TODO's</h2>
             )
-            }
-        </TodoContext.Consumer>
-    );
 }
 
 // exportacion por encapsulamiento 
