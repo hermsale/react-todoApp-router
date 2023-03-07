@@ -2,11 +2,8 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 
-
-const TodoContext = React.createContext();
-
-
-function TodoProvider(props){
+// creamos este custom hook para reemplazar al todoContext
+function useTodos(){
 
      // react Hooks personalizado //////////////////////////////////////////////////////////////////////////////
 
@@ -115,28 +112,24 @@ function TodoProvider(props){
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     return(
-        // Este lo vamos a utilizar para envolver toda nuestra aplicación en nuestra aplicación App.js
-        <TodoContext.Provider value={{
-            error,
-            loading,
-            totalTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            toggleCompleteTodo,
-            deleteTodo,
-            openModal, 
-            addTodo,
-            setOpenModal,
-            newTodoValue, 
-            setNewTodoValue         
-        }}>
-          {/* envolvemos en nuestro proveedor todos los elementos de la App */}
-            {props.children}
-        </TodoContext.Provider>
+        {
+          error,
+          loading,
+          totalTodos,
+          completedTodos,
+          searchValue,
+          setSearchValue,
+          searchedTodos,
+          toggleCompleteTodo,
+          deleteTodo,
+          openModal, 
+          addTodo,
+          setOpenModal,
+          newTodoValue, 
+          setNewTodoValue,              
+        }
     );
 }
 
 
-export {TodoContext, TodoProvider};
+export {useTodos};

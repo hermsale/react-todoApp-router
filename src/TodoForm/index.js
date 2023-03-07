@@ -1,16 +1,13 @@
 import React from 'react';
-import { TodoContext } from "../TodoContext";
 import "./TodoForm.css";
 
-function TodoForm(){
+function TodoForm({
+    addTodo, 
+    setOpenModal,
+    newTodoValue, 
+    setNewTodoValue,  
+}){
 
-    const
-        {
-            addTodo, 
-            setOpenModal,
-            newTodoValue, 
-            setNewTodoValue,  
-        } = React.useContext(TodoContext);
 
     // aqui guardaremos los cambios que haya en el textArea que es lo que enviaremos a la funcion que guardará el Todo
     
