@@ -48,8 +48,26 @@ function App() {
                 setSearchValue={setSearchValue}            
             />
           </TodoHeader>
+
+          <TodoList>
+            onError={() => <TodoError/>}
+            onLoading={() => <TodoLoading/>}
+            onEmptyTodos={() => <EmptyTodos/>}
+            searchedTodos={searchedTodos}
+            error={error}
+            loading={loading}
+            render = {todo =>(
+                <TodoItem
+                key={todo.text}                                       
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => toggleCompleteTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+            />
+            )}
+          </TodoList>
             
-            <TodoList>             
+            {/* <TodoList>             
                 {loading && <TodoLoading/>}
                 {error && <TodoError/>}
                 {(!loading && !searchedTodos.length) && <EmptyTodos/>}
@@ -64,7 +82,7 @@ function App() {
                     ))
                 }
                 { (!loading && completedTodos) ? <p className="TodoCompleted">Tienes Todo's para eliminar</p> : <p></p>}  
-            </TodoList>
+            </TodoList> */}
                 
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
                 {

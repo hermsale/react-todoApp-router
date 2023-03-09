@@ -3,3 +3,11 @@ ul{
     padding: 0 0 56px 0;
     list-style: none; 
 }
+
+.TodoList__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
