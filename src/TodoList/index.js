@@ -6,12 +6,18 @@ function TodoList(props){
         <section className='TodoList__container'>
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
-            {(props.loading && !props.searchedTodos.lenght) && props.onEmptyTodos()}
-
-            {props.searchedTodos.map(props.render)}
+            {/* {(!props.loading && !props.searchedTodos?.lenght) && props.onEmptyTodos()} */}
+            {(!props.loading && !props.searchedTodos?.length) && props.onEmptyTodos()}
+          
+        
+                {/* {props.searchedTodos?.map(props.render)} */}
             <ul>
-                {props.children}
+                {props.searchedTodos.map(todo => props.render(todo))}
+                
+                {/* {props.children} */}
             </ul>
+            { (!props.loading && props.completedTodos) ? <p className="TodoCompleted">Tienes Todo's para eliminar</p> : <p></p>}  
+            
         </section>
     );
 }
