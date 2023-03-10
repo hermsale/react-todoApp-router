@@ -53,22 +53,24 @@ function App() {
 
           <TodoList
             
+            // render props 
             onLoading={() => <TodoLoading/>}
             onError={() => <TodoError/>}
             onEmptyTodos={() => <EmptyTodos/>}
 
+            // estados de carga 
             searchedTodos={searchedTodos}
             error={error}
             loading={loading}
             completedTodos={completedTodos}
 
-            render = {todo => (
+            render = { item => (
                 <TodoItem
-                key={todo.text}                                       
-                text={todo.text}
-                completed={todo.completed}
-                onComplete={() => toggleCompleteTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
+                key={item.text}                                       
+                text={item.text}
+                completed={item.completed}
+                onComplete={() => toggleCompleteTodo(item.text)}
+                onDelete={() => deleteTodo(item.text)}
             />
             )}
             />
