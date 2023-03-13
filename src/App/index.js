@@ -57,7 +57,6 @@ function App() {
             onLoading={() => <TodoLoading/>}
             onError={() => <TodoError/>}
             onEmptyTodos={() => <EmptyTodos/>}
-            
             onEmptySearchResults = { (searchText) => <p>No se encontro resultados para {searchText} </p>}
 
             // estados de carga 
@@ -68,6 +67,7 @@ function App() {
             totalTodos={totalTodos}
             searchText={searchValue}
 
+            // render props
             render = { item => (
                 <TodoItem
                 key={item.text}                                       
@@ -75,9 +75,21 @@ function App() {
                 completed={item.completed}
                 onComplete={() => toggleCompleteTodo(item.text)}
                 onDelete={() => deleteTodo(item.text)}
-            />
+                />
             )}
-            />
+
+            >
+            {/* render functions */}
+            {/* { item => (
+                <TodoItem
+                key={item.text}                                       
+                text={item.text}
+                completed={item.completed}
+                onComplete={() => toggleCompleteTodo(item.text)}
+                onDelete={() => deleteTodo(item.text)}
+                />
+            )}   */}
+            </TodoList>
             
              {/* <TodoList>             
                 {loading && <TodoLoading/>}
