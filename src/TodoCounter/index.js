@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoCounter.css';
 
-function TodoCounter ({completedTodos,totalTodos}) {
+function TodoCounter ({completedTodos,totalTodos, loading}) {
 
     // Uso de useContext
     // const {
@@ -12,7 +12,8 @@ function TodoCounter ({completedTodos,totalTodos}) {
     return(
         // Opcion de uso de la etiqueta Consumer
 
-                <h2 className='TodoCounter'> Haz completado {completedTodos} de {totalTodos} TODO's</h2>
+                <h2 className={`TodoCounter ${loading && 'TodoCounter__h2--loading'}` }
+                > Haz completado {completedTodos} de {totalTodos} TODO's</h2>
             )
 }
 

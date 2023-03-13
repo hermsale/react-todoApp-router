@@ -42,11 +42,13 @@ function App() {
             <TodoCounter
                 completedTodos={completedTodos}
                 totalTodos={totalTodos}
+                loading={loading}
             />
 
             <TodoSearch
                 searchValue={searchValue} 
-                setSearchValue={setSearchValue}            
+                setSearchValue={setSearchValue}   
+                loading={loading}        
             />
 
           </TodoHeader>
@@ -109,7 +111,6 @@ function App() {
                 {/* verificamos que haya finalizado el loading y que no haya errores para que aparezca el boton */}
                 {
                     (!error && !loading) && 
-                    
                     <CreateTodoButton 
                       setOpenModal={setOpenModal}
                     />
