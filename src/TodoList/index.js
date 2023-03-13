@@ -7,8 +7,12 @@ function TodoList(props){
             {props.error && props.onError()}
             {props.loading && props.onLoading()}
             
-            {(!props.loading && !props.searchedTodos.length) && props.onEmptyTodos()}
-          
+            
+            {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+
+            {/* si HAY totalTodos, es falso. Y  si no se encuentran searchedTodos, es verdadero, pasa a negativo  */}
+            {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
+                    
         
             <ul>
                 {props.searchedTodos?.map(props.render)}
