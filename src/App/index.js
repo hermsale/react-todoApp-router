@@ -13,6 +13,7 @@ import { TodoLoading } from "../TodoLoading";
 import { TodoError } from "../TodoError";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoHeader } from "../TodoHeader";
+import { ChangeAlertWithStorageListener } from '../ChangeAlertWithStorageListener';
 
 function App() {
 
@@ -59,7 +60,7 @@ function App() {
             onLoading={() => <TodoLoading/>}
             onError={() => <TodoError/>}
             onEmptyTodos={() => <EmptyTodos/>}
-            onEmptySearchResults = { (searchText) => <p className='TodoCompleted'>No se encontro resultados para "{searchText}" </p>}
+            onEmptySearchResults = { (searchText) => <p className='onEmptySearchResults__p'>No se encontro resultados para "{searchText}" </p>}
 
             // estados de carga 
             searchedTodos={searchedTodos}
@@ -114,6 +115,8 @@ function App() {
                       setOpenModal={setOpenModal}
                     />
                 }
+
+                <ChangeAlertWithStorageListener/>
         </React.Fragment>   
   );
 }

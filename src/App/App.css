@@ -50,3 +50,10 @@
   margin: 0;
   padding: 48px;
 }
+
+.onEmptySearchResults__p{
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  padding: 48px;
+}

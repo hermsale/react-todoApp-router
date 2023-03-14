@@ -5,7 +5,6 @@ import React from "react";
 // este hook nos traera el itemName hacia donde nos direccionaremos en el localStorage ('TODOS_V1') para guardar items Y el valor inicial ("[]")
 function useLocalStorage(itemName, initialValue) {
 
-  
     // hook para controlar si hay un error en la carga
     const [error, setError] = React.useState(false);
     // hook para controlar el estado de carga de la aplicación. 
@@ -54,7 +53,7 @@ function useLocalStorage(itemName, initialValue) {
           setLoading(false);
         }
       },3000);
-    });
+    },[]);
    
   
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////
