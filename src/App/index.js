@@ -59,7 +59,7 @@ function App() {
             onLoading={() => <TodoLoading/>}
             onError={() => <TodoError/>}
             onEmptyTodos={() => <EmptyTodos/>}
-            onEmptySearchResults = { (searchText) => <p>No se encontro resultados para {searchText} </p>}
+            onEmptySearchResults = { (searchText) => <p className='TodoCompleted'>No se encontro resultados para "{searchText}" </p>}
 
             // estados de carga 
             searchedTodos={searchedTodos}
