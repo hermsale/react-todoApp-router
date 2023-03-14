@@ -37,18 +37,18 @@ function App() {
     
       <React.Fragment>
           
-          <TodoHeader>
+          <TodoHeader loading={loading}>
             
             <TodoCounter
                 completedTodos={completedTodos}
                 totalTodos={totalTodos}
-                loading={loading}
+                // loading={loading}
             />
 
             <TodoSearch
                 searchValue={searchValue} 
                 setSearchValue={setSearchValue}   
-                loading={loading}        
+                // loading={loading}        
             />
 
           </TodoHeader>
@@ -92,24 +92,7 @@ function App() {
                 />
             )}   */}
             </TodoList>
-            
-             {/* <TodoList>             
-                {loading && <TodoLoading/>}
-                {error && <TodoError/>}
-                {(!loading && !searchedTodos.length) && <EmptyTodos/>}
-                    {searchedTodos.map((todo) => (
-                        <TodoItem
-                            key={todo.text}                                       
-                            text={todo.text}
-                            completed={todo.completed}
-                            onComplete={() => toggleCompleteTodo(todo.text)}
-                            onDelete={() => deleteTodo(todo.text)}
-                        />
-                    ))
-                }
-                { (!loading && completedTodos) ? <p className="TodoCompleted">Tienes Todo's para eliminar</p> : <p></p>}  
-            </TodoList> */}
-                
+                            
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
                 {
                     !!openModal && (
