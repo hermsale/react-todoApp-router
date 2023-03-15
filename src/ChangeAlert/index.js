@@ -1,14 +1,17 @@
 import React from 'react';
 import withStorageListener from './withStorageListener';
-
-function ChangeAlert(){
+ 
+// inyectamos las dos propiedades del high order component
+function ChangeAlert({show, toggleShow}){
+    if(show){
     return (
         <p>Hubo cambios?</p>
     );
+    }
 }
 
 // el with Es nuestro HOC 
 const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
 
-// exportamos al App 
+// exportamos al App el HOC con el resultado envuelto
 export {ChangeAlertWithStorageListener};
