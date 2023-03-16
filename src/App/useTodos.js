@@ -13,6 +13,7 @@ function useTodos(){
    ,saveItem:saveTodos
    ,loading
    ,error
+   ,sincronizeItem:sincronizeTodos
  } = useLocalStorage('TODOS_V1',[]);
 
 
@@ -126,7 +127,8 @@ function useTodos(){
           addTodo,
           setOpenModal,
           newTodoValue, 
-          setNewTodoValue,              
+          setNewTodoValue,    
+          sincronizeTodos,          
         }
     );
 }

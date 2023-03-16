@@ -13,7 +13,7 @@ import { TodoLoading } from "../TodoLoading";
 import { TodoError } from "../TodoError";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoHeader } from "../TodoHeader";
-import { ChangeAlertWithStorageListener } from '../ChangeAlertWithStorageListener';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 function App() {
 
@@ -32,12 +32,14 @@ function App() {
           setOpenModal,
           newTodoValue, 
           setNewTodoValue,  
+          sincronizeTodos,
 } = useTodos();
 
   return (
     
       <React.Fragment>
           
+           
           <TodoHeader loading={loading}>
             
             <TodoCounter
@@ -53,6 +55,12 @@ function App() {
             />
 
           </TodoHeader>
+           
+        
+
+          {
+            
+            (sincronizeTodos && !loading) &&
 
           <TodoList
             
@@ -80,7 +88,6 @@ function App() {
                 onDelete={() => deleteTodo(item.text)}
                 />
             )}
-
             >
             {/* render functions */}
             {/* { item => (
@@ -93,6 +100,7 @@ function App() {
                 />
             )}   */}
             </TodoList>
+            }
                             
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
                 {
@@ -116,7 +124,9 @@ function App() {
                     />
                 }
 
-                <ChangeAlertWithStorageListener/>
+                <ChangeAlertWithStorageListener
+                    sincronize={sincronizeTodos}
+                />
                 
         </React.Fragment>   
   );

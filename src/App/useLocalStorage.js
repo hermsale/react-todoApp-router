@@ -1,5 +1,4 @@
 import React from "react";
-import { useTodos } from './useTodos';
 
 // este hook nos devolvera el item que hayamos guardado en LocalStorage. Ese elemento lo guardaremos dentro de un parametro al que llamaremos itemName 
 
@@ -10,6 +9,9 @@ function useLocalStorage(itemName, initialValue) {
     const [error, setError] = React.useState(false);
     // hook para controlar el estado de carga de la aplicación. 
     const [loading, setLoading] = React.useState(true);
+
+    // hook para controlar si hay una actualizacion en LocalStorage
+    const [sincronizatedItems, setSincronizatedItems] = React.useState(true);
     
      // estado inicial de nuestros Todo's
     const [item, setItem] = React.useState(initialValue);
@@ -46,7 +48,7 @@ function useLocalStorage(itemName, initialValue) {
             setItem(parsedItem);
             // ya termino de cargar y pasamos el estado a false
             setLoading(false);
-            // setError(false);
+            setSincronizatedItems(true);
             
           }catch(error){
           console.log('el error fue',error);
@@ -54,7 +56,7 @@ function useLocalStorage(itemName, initialValue) {
           setLoading(false);
         }
       },3000);
-    },[]);
+    },[sincronizatedItems]);
    
   
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +72,12 @@ function useLocalStorage(itemName, initialValue) {
           setError(true);
         }
       }
+
+      // cuando esta sincronizando activamos el cargando y el setSincronizatedItems pasa a false
+      const sincronizeItem = () =>{
+        setLoading(true);
+        setSincronizatedItems(false);
+      }
   
       // por medio del return le enviamos al App lo necesario, para que funcione la aplicacion 
       // le devolvemos un objeto, ya que por convención cuando se devuelve mas de 2 valores, hay que pasarlo de esta forma 
@@ -77,8 +85,8 @@ function useLocalStorage(itemName, initialValue) {
         item,
         saveItem,
         loading, // estado de carga
-        error // estado de error
-  
+        error, // estado de error
+        sincronizeItem,
       }
       
   }
