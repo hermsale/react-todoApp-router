@@ -13,7 +13,7 @@ import { TodoLoading } from "../TodoLoading";
 import { TodoError } from "../TodoError";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoHeader } from "../TodoHeader";
-import { ChangeAlertWithStorageListener } from '../ChangeAlert';
+import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
 
@@ -119,8 +119,8 @@ function App() {
                     />
                 }
 
-                {/* este componente se encarga de verificar si hay actualizaciones en la BD */}
-                <ChangeAlertWithStorageListener
+                {/* este componente se encarga de verificar si hay actualizaciones en el LocalStorage */}
+                <ChangeAlert
                     sincronize={sincronizeTodos}
                 />
                 

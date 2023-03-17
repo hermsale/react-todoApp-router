@@ -1,9 +1,16 @@
 import React from 'react';
-import { withStorageListener } from './withStorageListener';
+import { useStorageListener } from './useStorageListener';
 import "./ChangeAlert.css"
 
-// inyectamos las dos propiedades del high order component
-function ChangeAlert({ show, toggleShow }) {
+
+function ChangeAlert({sincronize}) {
+
+    // llamamos las propiedades desde nuestro custom hook 
+    const {
+        show,
+        toggleShow
+    } = useStorageListener(sincronize);
+
     // si show es true 
     if (show) {
         return (
@@ -27,8 +34,4 @@ function ChangeAlert({ show, toggleShow }) {
     }
 }
 
-// el with Es nuestro HOC 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-// exportamos al App el HOC con el resultado envuelto
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };
