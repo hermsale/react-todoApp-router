@@ -48,6 +48,8 @@ function useLocalStorage(itemName, initialValue) {
             setItem(parsedItem);
             // ya termino de cargar y pasamos el estado a false
             setLoading(false);
+
+
             setSincronizatedItems(true);
             
           }catch(error){
@@ -76,7 +78,7 @@ function useLocalStorage(itemName, initialValue) {
       // cuando esta sincronizando activamos el cargando y el setSincronizatedItems pasa a false
       const sincronizeItem = () =>{
         setLoading(true);
-        setSincronizatedItems(false);
+        setSincronizatedItems(false); 
       }
   
       // por medio del return le enviamos al App lo necesario, para que funcione la aplicacion 

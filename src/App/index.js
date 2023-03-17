@@ -56,13 +56,7 @@ function App() {
 
           </TodoHeader>
            
-        
-
-          {
-            
-            (sincronizeTodos && !loading) &&
-
-          <TodoList
+            <TodoList
             
             // render props 
             onLoading={() => <TodoLoading/>}
@@ -79,8 +73,9 @@ function App() {
             searchText={searchValue}
 
             // render props
+            
             render = { item => (
-                <TodoItem
+                <TodoItem 
                 key={item.text}                                       
                 text={item.text}
                 completed={item.completed}
@@ -100,7 +95,7 @@ function App() {
                 />
             )}   */}
             </TodoList>
-            }
+            
                             
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
                 {
@@ -124,6 +119,7 @@ function App() {
                     />
                 }
 
+                {/* este componente se encarga de verificar si hay actualizaciones en la BD */}
                 <ChangeAlertWithStorageListener
                     sincronize={sincronizeTodos}
                 />
