@@ -121,7 +121,7 @@ function App() {
 
                 {/* este componente se encarga de verificar si hay actualizaciones en el LocalStorage */}
                 <ChangeAlert
-                    sincronize={sincronizeTodos}
+                    sincronizeTodos={sincronizeTodos}
                 />
                 
         </React.Fragment>   

@@ -3,13 +3,13 @@ import { useStorageListener } from './useStorageListener';
 import "./ChangeAlert.css"
 
 
-function ChangeAlert({sincronize}) {
+function ChangeAlert({sincronizeTodos}) {
 
     // llamamos las propiedades desde nuestro custom hook 
     const {
         show,
         toggleShow
-    } = useStorageListener(sincronize);
+    } = useStorageListener(sincronizeTodos);
 
     // si show es true 
     if (show) {

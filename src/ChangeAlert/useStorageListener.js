@@ -1,6 +1,6 @@
 import React from 'react';
 
-function useStorageListener({sincronize}) {
+function useStorageListener(sincronizeTodos) {
 
     // crearemos un react hook para saber si hubo cambios en la aplicacion, en otra pestaña del navegador
     const [storageChange, setStorageChange] = React.useState(false);
@@ -15,7 +15,7 @@ function useStorageListener({sincronize}) {
     // cuando se activa el boton de sincronizacion 
     const toggleShow = () => {
         // activamos el sincronize del useLocalStorage, que avisa que hay un cambio en su estado
-        sincronize();
+        sincronizeTodos();
         // el show lo pasamos a false para que no muestre el mensaje
         setStorageChange(false);
     }
