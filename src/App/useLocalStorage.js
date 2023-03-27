@@ -134,7 +134,7 @@ function useLocalStorage(itemName, initialValue) {
         ...state,
         error:false,
         loading:false,
-        setSincronizatedItems:true,
+        sincronizatedItems:true,
         item:action.payload,
       }
       case actionTypes.save: return {
