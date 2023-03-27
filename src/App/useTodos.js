@@ -112,23 +112,33 @@ function useTodos(){
 
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    return(
-        {
+  //  estados
+   const state = {
           error,
           loading,
           totalTodos,
           completedTodos,
           searchValue,
-          setSearchValue,
           searchedTodos,
-          toggleCompleteTodo,
-          deleteTodo,
           openModal, 
+          newTodoValue,
+   }
+
+  //  actualizadores de estados 
+   const stateUpdaters = {
+    toggleCompleteTodo,
+          deleteTodo,
           addTodo,
           setOpenModal,
-          newTodoValue, 
+          setSearchValue,
           setNewTodoValue,    
-          sincronizeTodos,          
+          sincronizeTodos,  
+   }
+
+    return(
+        {
+          state,
+          stateUpdaters
         }
     );
 }

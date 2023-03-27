@@ -17,23 +17,33 @@ import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
 
-  const {
-          error,
-          loading,
-          totalTodos,
-          completedTodos,
-          searchValue,
-          setSearchValue,
-          searchedTodos,
-          toggleCompleteTodo,
-          deleteTodo,
-          openModal, 
-          addTodo,
-          setOpenModal,
-          newTodoValue, 
-          setNewTodoValue,  
-          sincronizeTodos,
-} = useTodos();
+    const {
+        state,
+        stateUpdaters
+    } = useTodos();
+
+    // estados
+    const {
+        error,
+        loading,
+        totalTodos,
+        completedTodos,
+        searchValue,
+        searchedTodos,
+        openModal,
+        newTodoValue,
+    } = state;
+
+    // actualizadores de estados 
+    const {
+        setSearchValue,
+        toggleCompleteTodo,
+        deleteTodo,
+        addTodo,
+        setOpenModal,
+        setNewTodoValue,
+        sincronizeTodos,
+    } = stateUpdaters;
 
   return (
     
