@@ -18,9 +18,10 @@ function useLocalStorage(itemName, initialValue) {
 
   // ACTION CREATORS
 
-  const onError = () => { dispatch({type: actionTypes.error, payload:error})}
- 
-  
+  const onError = (error) => { dispatch({type: actionTypes.error, payload:error}) }
+  const onSuccess = (parsedItem) => { dispatch({type: actionTypes.success, payload:parsedItem}) }
+  const onSave = (item) => { dispatch({type: actionTypes.save, payload:item}) }
+  const onSincronize = () => { dispatch({type: actionTypes.sincronize}) }
 
   // // hook para controlar si hay un error en la carga
   // const [error, setError] = React.useState(false);
@@ -47,8 +48,6 @@ function useLocalStorage(itemName, initialValue) {
               const localStorageItem = localStorage.getItem(itemName);
             // variable que contendra el objeto JavaScript una vez parsiado el archivo JSON
               let parsedItem;
-      
-            
             // si no hay nada en localStorageItem, que cree un array vacio y listo para rellenar
             // Esta posibilidad se puede dar si es un usuario que recien inicia la aplicación y no tiene nada cargado
             if(!localStorageItem){
@@ -60,13 +59,10 @@ function useLocalStorage(itemName, initialValue) {
               parsedItem = JSON.parse(localStorageItem);
             }
       
-            setItem(parsedItem);
-            // ya termino de cargar y pasamos el estado a false
-            setLoading(false);
-
-
-            setSincronizatedItems(true);
-            
+            // setItem(parsedItem);
+            // setLoading(false);
+            // setSincronizatedItems(true);
+            onSuccess(parsedItem);
           }catch(error){
           console.log('el error fue',error);
           onError(error);
@@ -84,8 +80,8 @@ function useLocalStorage(itemName, initialValue) {
         try{
           const stringifiedItem = JSON.stringify(newItem);
           localStorage.setItem(itemName,stringifiedItem);
-          
-          setItem(newItem); 
+          // setItem(newItem); 
+          onSave(newItem)
         }
         catch{
           // dispatch({type: actionTypes.error, payload:error})
@@ -96,8 +92,9 @@ function useLocalStorage(itemName, initialValue) {
 
       // cuando esta sincronizando activamos el cargando y el setSincronizatedItems pasa a false
       const sincronizeItem = () =>{
-        setLoading(true);
-        setSincronizatedItems(false); 
+        onSincronize()
+        // setLoading(true);
+        // setSincronizatedItems(false); 
       }
   
       // por medio del return le enviamos al App lo necesario, para que funcione la aplicacion 
@@ -122,9 +119,9 @@ function useLocalStorage(itemName, initialValue) {
 
   const actionTypes ={
     error:'ERROR',
-    loading:'LOADING',
-    sincronizatedItems:'SINC',
-    // item:initialValue
+    success:'SUCCESS',
+    save:'SAVE',
+    sincronize: 'SINCRONIZE',
   }
 
   const reducer = (state, action) => {
@@ -132,6 +129,22 @@ function useLocalStorage(itemName, initialValue) {
       case actionTypes.error: return {
         ...state,
         error:true,
+      }
+      case actionTypes.success: return {
+        ...state,
+        error:false,
+        loading:false,
+        setSincronizatedItems:true,
+        item:action.payload,
+      }
+      case actionTypes.save: return {
+        ...state,
+        item: action.payload,
+      }
+      case actionTypes.sincronize: return {
+        ...state,
+        loading:true,
+        sincronizatedItems:false 
       }
       default: return{
         ...state
