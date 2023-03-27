@@ -5,16 +5,31 @@ import React from "react";
 // este hook nos traera el itemName hacia donde nos direccionaremos en el localStorage ('TODOS_V1') para guardar items Y el valor inicial ("[]")
 function useLocalStorage(itemName, initialValue) {
 
-    // hook para controlar si hay un error en la carga
-    const [error, setError] = React.useState(false);
-    // hook para controlar el estado de carga de la aplicación. 
-    const [loading, setLoading] = React.useState(true);
+  // el initialvalue lo pasamos como una funcion con initialState
+  const [state, dispatch] = React.useReducer(reducer, initialState({initialValue}));
 
-    // hook para controlar si hay una actualizacion en LocalStorage
-    const [sincronizatedItems, setSincronizatedItems] = React.useState(true);
-    
-     // estado inicial de nuestros Todo's
-    const [item, setItem] = React.useState(initialValue);
+  // desestructuramos el objeto state
+  const {
+    error,
+    loading,
+    sincronizatedItems,
+    item,
+  } = state;
+
+  // ACTION CREATORS
+
+  const onError = () => { dispatch({type: actionTypes.error, payload:error})}
+ 
+  
+
+  // // hook para controlar si hay un error en la carga
+  // const [error, setError] = React.useState(false);
+  // // hook para controlar el estado de carga de la aplicación. 
+  // const [loading, setLoading] = React.useState(true);
+  // // hook para controlar si hay una actualizacion en LocalStorage
+  // const [sincronizatedItems, setSincronizatedItems] = React.useState(true);
+  //  // estado inicial de nuestros Todo's
+  // const [item, setItem] = React.useState(initialValue);
   
     React.useEffect(() => {
       
@@ -54,8 +69,9 @@ function useLocalStorage(itemName, initialValue) {
             
           }catch(error){
           console.log('el error fue',error);
-          setError(error);
-          setLoading(false);
+          onError(error);
+          // setError(error);
+          // setLoading(false);
         }
       },3000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,7 +88,9 @@ function useLocalStorage(itemName, initialValue) {
           setItem(newItem); 
         }
         catch{
-          setError(true);
+          // dispatch({type: actionTypes.error, payload:error})
+          onError(error);
+          // setError(true);
         }
       }
 
@@ -92,6 +110,34 @@ function useLocalStorage(itemName, initialValue) {
         sincronizeItem,
       }
       
+  }
+
+ // declaramos el objeto initialState - lo declaramos con un return implicito 
+  const initialState = ({initialValue}) => ({
+      error:false,
+      loading:true,
+      sincronizatedItems:true,
+      item:initialValue,
+  }) 
+
+  const actionTypes ={
+    error:'ERROR',
+    loading:'LOADING',
+    sincronizatedItems:'SINC',
+    // item:initialValue
+  }
+
+  const reducer = (state, action) => {
+    switch (action.type){
+      case actionTypes.error: return {
+        ...state,
+        error:true,
+      }
+      default: return{
+        ...state
+      }
+    }
+
   }
 
   export {useLocalStorage};
