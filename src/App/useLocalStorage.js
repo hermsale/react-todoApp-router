@@ -6,7 +6,7 @@ import React from "react";
 function useLocalStorage(itemName, initialValue) {
 
   // el initialvalue lo pasamos como una funcion con initialState
-  const [state, dispatch] = React.useReducer(reducer, initialState({initialValue}));
+  const [state, dispatch] = React.useReducer(reducer, initialState(initialValue));
 
   // desestructuramos el objeto state
   const {
@@ -110,7 +110,7 @@ function useLocalStorage(itemName, initialValue) {
   }
 
  // declaramos el objeto initialState - lo declaramos con un return implicito 
-  const initialState = ({initialValue}) => ({
+  const initialState = (initialValue) => ({
       error:false,
       loading:true,
       sincronizatedItems:true,
