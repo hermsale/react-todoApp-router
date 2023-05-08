@@ -2,6 +2,7 @@ import React from "react";
 import "./TodoItem.css";
 
 import { FaCheck, FaHotjar } from "react-icons/fa";
+import {AiOutlineEdit} from "react-icons/ai";
 
 
 function TodoItem(props) {
@@ -21,6 +22,9 @@ function TodoItem(props) {
       >
         {props.text}
       </p>
+      <span className="Icon Icon__edit-active">
+        <AiOutlineEdit />
+      </span>
       {/* si la tarea esta completa,  habilitamos el boton para eliminar */}
       {
         props.completed ?

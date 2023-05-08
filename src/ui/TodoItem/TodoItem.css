@@ -47,6 +47,10 @@
   .Icon__check-active {
     color: #4caf50;
   }
+
+  .Icon__edit-active:hover {
+    color: #4caf50;
+  }
   
   .Icon__delete {
     transition: .5s ease;
