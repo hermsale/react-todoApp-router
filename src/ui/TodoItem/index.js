@@ -22,9 +22,12 @@ function TodoItem(props) {
       >
         {props.text}
       </p>
-      <span className="Icon Icon__edit-active">
+
+      {/* boton edit */}
+      <span className="Icon Icon__edit-active" onClick={props.onEdit}>
         <AiOutlineEdit />
       </span>
+
       {/* si la tarea esta completa,  habilitamos el boton para eliminar */}
       {
         props.completed ?

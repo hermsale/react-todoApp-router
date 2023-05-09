@@ -89,8 +89,10 @@ function HomePage() {
                 key={item.text}                                       
                 text={item.text}
                 completed={item.completed}
-                onComplete={() => toggleCompleteTodo(item.text)}
-                onDelete={() => deleteTodo(item.text)}
+
+                onEdit = {() => console.log("Editar item")}
+                onComplete={() => toggleCompleteTodo(item.id)}
+                onDelete={() => deleteTodo(item.id)}
                 />
             )}
             >

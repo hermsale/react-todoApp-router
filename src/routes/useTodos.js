@@ -14,7 +14,7 @@ function useTodos(){
    ,loading
    ,error
    ,sincronizeItem:sincronizeTodos
- } = useLocalStorage('TODOS_V1',[]);
+ } = useLocalStorage('TODOS_V2',[]);
 
 
 //  Se encarga de guardar los estados de los nuevos Todo's utilizado en el TodoForm 
@@ -57,12 +57,14 @@ function useTodos(){
   // Agregar Todo's 
 
   const addTodo = (text) => {
+    const id = newTodoId(todos);
     const newItem = [...todos];
     
     // tenemos que enviarle el objeto con las propiedades de un Todo
     newItem.push({
       text:text,
       completed:false,
+      id,
     });
     saveTodos(newItem);
   }
@@ -71,9 +73,9 @@ function useTodos(){
    // completetar Todo's - esta funcion nos permite marcar como completo o sin completar un TODO 
 
    // recibimos el index para compararlo y ver cual cumple la condicion, para pasarlo a completo/incompleto
-   const toggleCompleteTodo = (text) => {
+   const toggleCompleteTodo = (id) => {
      // guardamos el indice de la coincidencia, entre el index que nos llega y el del array
-     const todoIndex = todos.findIndex(todo => todo.text === text);
+     const todoIndex = todos.findIndex(todo => todo.id === id);
     //  console.log(todoIndex);
      // clonamos en un nuevo array los todos
      const newItem = [...todos];
@@ -143,5 +145,15 @@ function useTodos(){
     );
 }
 
+function newTodoId(todoList){
+  // if(!todoList.length){
+  //   return 1;
+  // }
+  // const idList = todoList.map( todo => todo.id);
+  // // usamos el spreed operator debido a que la funcion Math no soporta los arrays, entonces de esta forma podemos convertir los elementos del array en distintos parametros
+  // const idMax = Math.max(...idList);
+  // return idMax+1; // devolvemos el ultimo +1
+  return Date.now();
+}
 
 export {useTodos};
