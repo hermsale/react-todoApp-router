@@ -71,7 +71,6 @@ function useTodos(){
 
 
    // completetar Todo's - esta funcion nos permite marcar como completo o sin completar un TODO 
-
    // recibimos el index para compararlo y ver cual cumple la condicion, para pasarlo a completo/incompleto
    const toggleCompleteTodo = (id) => {
      // guardamos el indice de la coincidencia, entre el index que nos llega y el del array
@@ -89,6 +88,15 @@ function useTodos(){
      saveTodos(newItem);
      
    }
+
+  //  funcion para modificar el Todo
+   const editTodo = (id, newText) => {
+    const todoIndex = todos.findIndex(todo => todo.id === id);
+    const newItem = [...todos];
+    newItem[todoIndex].text = newText;
+    saveTodos(newItem);
+    
+  }
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -135,6 +143,7 @@ function useTodos(){
           setSearchValue,
           setNewTodoValue,    
           sincronizeTodos,  
+          editTodo
    }
 
     return(

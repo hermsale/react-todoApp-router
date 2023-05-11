@@ -1,13 +1,12 @@
 import React from 'react';
 import "./TodoForm.css";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function TodoForm(
     props
 ){
 
-    const {id} = useParams()
-    console.log('el id es', id)
+    
     //  guarda el cambio de valor del textarea
     const [newTodoValue, setNewTodoValue] = React.useState('');
     const navigate = useNavigate();
@@ -31,7 +30,8 @@ function TodoForm(
         // evitamos que se agreguen textos vacios a la lista
         if(newTodoValue.length > 0) {
         // addTodo(newTodoValue);
-        props.submitEvent();
+        
+        props.submitEvent(newTodoValue);
         navigate('/');
         // volvemos a poner el placeholder del formulario
         setNewTodoValue('');
@@ -54,6 +54,7 @@ function TodoForm(
                 >
                     Cancelar
                 </button>                
+
                 <button
                     onClick={onSubmit}
                     type="submit"
