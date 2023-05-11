@@ -24,7 +24,7 @@ function useTodos(){
    const [searchValue, setSearchValue] = React.useState('');  
 
 // este useState nos permitira abrir o cerrar el modal de ingreso de Todo's
-   const [openModal, setOpenModal] = React.useState(false);
+  //  const [openModal, setOpenModal] = React.useState(false);
 
    //////////////////////////////////////////////////////////////////////////////////
    // guardara la cantidad de todo's completos - si todo.completed es true
@@ -95,9 +95,9 @@ function useTodos(){
    // eliminar Todo's - esta función elimina de manera permanente un TODO, ya sea tildado como completo o no
 
    // recibimos el index para compararlo y ver cual cumple la condicion, para pasarlo a completo/incompleto
-   const deleteTodo = (text) => {
+   const deleteTodo = (id) => {
      // guardamos el indice de la coincidencia, entre el index que nos llega y el del array
-     const todoIndex = todos.findIndex(todo => todo.text === text);
+     const todoIndex = todos.findIndex(todo => todo.id === id);
      console.log(todoIndex);
      // // clonamos en un nuevo array los todos
      const newItem = [...todos];
@@ -122,7 +122,7 @@ function useTodos(){
           completedTodos,
           searchValue,
           searchedTodos,
-          openModal, 
+          // openModal, 
           newTodoValue,
    }
 
@@ -131,7 +131,7 @@ function useTodos(){
     toggleCompleteTodo,
           deleteTodo,
           addTodo,
-          setOpenModal,
+          // setOpenModal,
           setSearchValue,
           setNewTodoValue,    
           sincronizeTodos,  
@@ -145,15 +145,18 @@ function useTodos(){
     );
 }
 
+// esta funcion es la generadora ID's automatico 
 function newTodoId(todoList){
-  // if(!todoList.length){
-  //   return 1;
-  // }
-  // const idList = todoList.map( todo => todo.id);
-  // // usamos el spreed operator debido a que la funcion Math no soporta los arrays, entonces de esta forma podemos convertir los elementos del array en distintos parametros
-  // const idMax = Math.max(...idList);
-  // return idMax+1; // devolvemos el ultimo +1
-  return Date.now();
+  if(!todoList.length){
+    return 1;
+  }
+  const idList = todoList.map( todo => todo.id);
+  // usamos el spreed operator debido a que la funcion Math no soporta los arrays, entonces de esta forma podemos convertir los elementos del array en distintos parametros
+  const idMax = Math.max(...idList);
+  return idMax+1; // devolvemos el ultimo +1
+
+  // Metodo para generar ID's por el horario del sistema en MS
+  // return Date.now();
 }
 
 export {useTodos};

@@ -7,15 +7,18 @@ import { TodoSearch } from '../../ui/TodoSearch';
 import { TodoList } from '../../ui/TodoList';
 import { TodoItem } from '../../ui/TodoItem';
 import { CreateTodoButton } from '../../ui/CreateTodoButton';
-import { TodoForm } from "../../ui/TodoForm";
-import { Modal } from '../../ui/Modal';
+
+// import { Modal } from '../../ui/Modal';
 import { TodoLoading } from "../../ui/TodoLoading";
 import { TodoError } from "../../ui/TodoError";
 import { EmptyTodos } from "../../ui/EmptyTodos";
 import { TodoHeader } from "../../ui/TodoHeader";
 import { ChangeAlert } from '../../ui/ChangeAlert';
+import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
+
+    const navigate = useNavigate();
 
     const {
         state,
@@ -30,8 +33,7 @@ function HomePage() {
         completedTodos,
         searchValue,
         searchedTodos,
-        openModal,
-        newTodoValue,
+        // openModal,
     } = state;
 
     // actualizadores de estados 
@@ -39,9 +41,8 @@ function HomePage() {
         setSearchValue,
         toggleCompleteTodo,
         deleteTodo,
-        addTodo,
-        setOpenModal,
-        setNewTodoValue,
+        // addTodo,
+        // setOpenModal,
         sincronizeTodos,
     } = stateUpdaters;
 
@@ -90,7 +91,7 @@ function HomePage() {
                 text={item.text}
                 completed={item.completed}
 
-                onEdit = {() => console.log("Editar item")}
+                onEdit = {() => navigate('/edit/'+item.id)}
                 onComplete={() => toggleCompleteTodo(item.id)}
                 onDelete={() => deleteTodo(item.id)}
                 />
@@ -110,7 +111,7 @@ function HomePage() {
             
                             
                 {/* solo si se hace click en el boton, aparecera el TodoForm */}
-                {
+                {/* {
                     !!openModal && (
                         <Modal>
                            <TodoForm
@@ -121,13 +122,15 @@ function HomePage() {
                            />
                         </Modal>
                     )
-                }
+                } */}
 
                 {/* verificamos que haya finalizado el loading y que no haya errores para que aparezca el boton */}
                 {
                     (!error && !loading) && 
                     <CreateTodoButton 
-                      setOpenModal={setOpenModal}
+                    //   setOpenModal={setOpenModal}
+                        // pasamos la propiedad onClick
+                        onNavigateNew={() => navigate('new')}
                     />
                 }
 

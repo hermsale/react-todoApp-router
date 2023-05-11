@@ -69,7 +69,7 @@ function useLocalStorage(itemName, initialValue) {
           // setError(error);
           // setLoading(false);
         }
-      },3000);
+      },1000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[sincronizatedItems]);
    
