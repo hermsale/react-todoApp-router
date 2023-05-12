@@ -70,6 +70,11 @@ function useTodos(){
   }
 
 
+  const getTodo = (id) => {
+    const todoIndex = todos.findIndex(todo => todo.id === id);
+  return todos[todoIndex];
+  }
+
    // completetar Todo's - esta funcion nos permite marcar como completo o sin completar un TODO 
    // recibimos el index para compararlo y ver cual cumple la condicion, para pasarlo a completo/incompleto
    const toggleCompleteTodo = (id) => {
@@ -132,6 +137,7 @@ function useTodos(){
           searchedTodos,
           // openModal, 
           newTodoValue,
+          getTodo,
    }
 
   //  actualizadores de estados 

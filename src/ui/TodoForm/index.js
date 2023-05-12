@@ -42,7 +42,7 @@ function TodoForm(
         <form onSubmit={onSubmit}>
             <label>{props.label}</label>
             <textarea
-                placeholder={props.textarea}
+                placeholder={props.placeholder}
                 value={newTodoValue}
                 onChange={onChange}
             />
