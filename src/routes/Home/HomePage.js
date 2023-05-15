@@ -34,6 +34,7 @@ function HomePage() {
         searchValue,
         searchedTodos,
         // openModal,
+        params,
     } = state;
 
     // actualizadores de estados 
@@ -44,6 +45,7 @@ function HomePage() {
         // addTodo,
         // setOpenModal,
         sincronizeTodos,
+        setParams
     } = stateUpdaters;
 
   return (
@@ -61,7 +63,9 @@ function HomePage() {
 
             <TodoSearch
                 searchValue={searchValue} 
-                setSearchValue={setSearchValue}   
+                setSearchValue={setSearchValue} 
+                params={params}
+                setParams={setParams}  
                 // loading={loading}        
             />
 

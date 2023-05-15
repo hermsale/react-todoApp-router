@@ -16,8 +16,8 @@ function ChangeAlert({sincronizeTodos}) {
         return (
             <div className="ChangeAlert__bg">
                 <div className="ChangeAlert__container">
-                    <p>Parece que cambiaste tus TODO's en otra pestaña o ventana del navegador.</p>
-                    <p>¿Quieres sincronizar tus TODO's?</p>
+                    <p>Parece que cambiaste tus Recordatorios en otra pestaña o ventana del navegador.</p>
+                    <p>¿Quieres sincronizar tus Recordatorios?</p>
                     <button
                         className="ChangeAlert__button"
                         onClick={() => toggleShow()}

@@ -19,7 +19,7 @@ function TodoList(props){
                 {/* si no esta cargando y no hay errores, renderizamos */}
                 {(!props.loading && !props.error)&& props.searchedTodos.map(renderFunct)}
             </ul>
-            { (!props.loading && props.completedTodos) ? <p className="TodoCompleted">Tienes Todo's para eliminar</p> : <p></p>}  
+            { (!props.loading && props.completedTodos) ? <p className="TodoCompleted">Tienes Recordatorios para eliminar</p> : <p></p>}  
             
         </section>
     );
