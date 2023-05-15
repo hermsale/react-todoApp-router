@@ -5,11 +5,17 @@ import { useNavigate } from 'react-router-dom';
 function TodoForm(
     props
 ){
-
+    const navigate = useNavigate();
     
     //  guarda el cambio de valor del textarea
     const [newTodoValue, setNewTodoValue] = React.useState('');
-    const navigate = useNavigate();
+
+    // recibimos el texto para el EditTodoPage
+    React.useEffect(() => {
+        setNewTodoValue(props.textAreaText)
+    },[props.textAreaText])
+
+    
 
     // aqui guardaremos los cambios que haya en el textArea que es lo que enviaremos a la funcion que guardará el Todo
     

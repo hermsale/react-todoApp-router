@@ -5,14 +5,15 @@ import { useTodos } from "../useTodos";
 
 function NewTodoPage(){
     
-    const {stateUpdaters } = useTodos();
+    const { stateUpdaters } = useTodos();
     const { addTodo } = stateUpdaters;
 
     return(
         <TodoForm
         label="Agrega tu nuevo Todo's"
         submitText="Añadir"
-        textarea="Escribe tu nuevo Todo"
+        placeholder="Escribe tu nuevo Todo"
+        textAreaText=""
         submitEvent={(text) => addTodo(text)}
         />
     )
