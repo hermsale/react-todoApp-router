@@ -10,9 +10,9 @@ function NewTodoPage(){
 
     return(
         <TodoForm
-        label="Agrega tu nuevo Todo's"
+        label="Agrega tu nuevo Recordatorio"
         submitText="Añadir"
-        placeholder="Escribe tu nuevo Todo"
+        placeholder="Escribe aquí"
         textAreaText=""
         submitEvent={(text) => addTodo(text)}
         />

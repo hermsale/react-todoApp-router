@@ -38,8 +38,9 @@ function EditTodoPage(){
 
     return(
         <TodoForm
-        label="Edita tu Todo"
+        label="Edita tu Recordatorio"
         submitText="Modificar"
+        disabledInput={loading}
         placeholder={placeholderText}
         textAreaText={defaultText}
         submitEvent = { (text) => editTodo(id, text)}
