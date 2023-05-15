@@ -51,7 +51,6 @@ function TodoForm(
                 placeholder={props.placeholder}
                 value={newTodoValue}
                 onChange={onChange}
-                disabled={props.disabledInput}
             />
             <div className='TodoForm-buttonContainer'>
                 <button
