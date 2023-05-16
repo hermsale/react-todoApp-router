@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { useSearchParams } from "react-router-dom";
 
 
 // creamos este custom hook para reemplazar al todoContext
@@ -22,6 +23,9 @@ function useTodos(){
 
 // se guarda el estado y una funcion para actualizarlo, esto es propio del objeto React.useState
    const [searchValue, setSearchValue] = React.useState('');  
+
+// asignador de params en el buscador 
+   const [params, setParams] = useSearchParams();
 
 // este useState nos permitira abrir o cerrar el modal de ingreso de Todo's
   //  const [openModal, setOpenModal] = React.useState(false);
@@ -138,6 +142,7 @@ function useTodos(){
           // openModal, 
           newTodoValue,
           getTodo,
+          params,
    }
 
   //  actualizadores de estados 
@@ -149,7 +154,8 @@ function useTodos(){
           setSearchValue,
           setNewTodoValue,    
           sincronizeTodos,  
-          editTodo
+          editTodo,
+          setParams
    }
 
     return(

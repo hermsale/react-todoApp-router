@@ -13,7 +13,7 @@ function TodoCounter ({completedTodos,totalTodos, loading}) {
         // Opcion de uso de la etiqueta Consumer
 
                 <h2 className={`TodoCounter ${loading && 'TodoCounter__h2--loading'}` }
-                > Haz completado {completedTodos} de {totalTodos} TODO's</h2>
+                > Haz completado {completedTodos} de {totalTodos} Recordatorios</h2>
             )
 }
 

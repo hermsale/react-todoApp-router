@@ -6,13 +6,13 @@ function TodoLoading(){
     return (
         <div className="TodoLoading_container">
             <div className="TodoLoading_item">
-                <p className="TodoLoading__text">Cargando Todo's...</p>
+                <p className="TodoLoading__text">Cargando Recordatorio...</p>
             </div>
             <div className="TodoLoading_item">
-                <p className="TodoLoading__text">Cargando Todo's...</p>
+                <p className="TodoLoading__text">Cargando Recordatorio...</p>
             </div>
             <div className="TodoLoading_item">
-                <p className="TodoLoading__text">Cargando Todo's...</p>
+                <p className="TodoLoading__text">Cargando Recordatorio...</p>
             </div>
         </div>
     )

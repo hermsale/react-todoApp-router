@@ -1,9 +1,14 @@
 import React from "react";
 import { TodoForm } from "../../ui/TodoForm";
 import { useTodos } from "../useTodos";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 function EditTodoPage(){
+
+    // importamos el useLocation para atrapar los parametros state que le pasemos por el navigate del HomePage
+    const location = useLocation();
+    // console.log(location.state.item.text);
+
 
     // tomamos el parametro, y lo pasamos a numero 
     const params = useParams()
@@ -19,21 +24,26 @@ function EditTodoPage(){
 
     let defaultText;
     let placeholderText;
+    let placeholderText;
 
+    if(location.state?.item){
+        defaultText = location.state.item.text;
+    }else 
     if(loading) {
         placeholderText='cargando...';
-        defaultText='';
+        defaultText = ''
     }else{
         placeholderText = '';
         defaultText = todo.text;
-        console.log(defaultText);
+        placeholderText= '';
     }
     return(
         <TodoForm
-        label="Edita tu Todo"
+        label="Edita tu Recordatorio"
         submitText="Modificar"
+        
         placeholder={placeholderText}
-        textArea={defaultText}
+        textAreaText={defaultText}
         submitEvent = { (text) => editTodo(id, text)}
         />
     )

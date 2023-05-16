@@ -6,7 +6,7 @@ function useStorageListener(sincronizeTodos) {
     const [storageChange, setStorageChange] = React.useState(false);
 
     window.addEventListener('storage', (event) => {
-        if (event.key === "TODOS_V1") {
+        if (event.key === "TODOS_V2") {
             console.log('hubo un evento');
             setStorageChange(true);
         }

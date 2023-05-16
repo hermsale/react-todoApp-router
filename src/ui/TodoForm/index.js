@@ -5,16 +5,17 @@ import { useNavigate } from 'react-router-dom';
 function TodoForm(
     props
 ){
-
+    const navigate = useNavigate();
     
     //  guarda el cambio de valor del textarea
-    let textAreaLocal = props.textArea;
+    const [newTodoValue, setNewTodoValue] = React.useState('');
+
+    // recibimos el texto para el EditTodoPage
+    React.useEffect(() => {
+        setNewTodoValue(props.textAreaText)
+    },[props.textAreaText])
+
     
-    // textArea
-    const [newTodoValue, setNewTodoValue] = React.useState(props.textArea || textAreaLocal);
-    console.log('el texto defecto es ', newTodoValue);
-    // console.log(newTodoValue);
-    const navigate = useNavigate();
 
     // aqui guardaremos los cambios que haya en el textArea que es lo que enviaremos a la funcion que guardará el Todo
     

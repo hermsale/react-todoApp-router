@@ -34,6 +34,7 @@ function HomePage() {
         searchValue,
         searchedTodos,
         // openModal,
+        params,
     } = state;
 
     // actualizadores de estados 
@@ -44,6 +45,7 @@ function HomePage() {
         // addTodo,
         // setOpenModal,
         sincronizeTodos,
+        setParams
     } = stateUpdaters;
 
   return (
@@ -61,7 +63,9 @@ function HomePage() {
 
             <TodoSearch
                 searchValue={searchValue} 
-                setSearchValue={setSearchValue}   
+                setSearchValue={setSearchValue} 
+                params={params}
+                setParams={setParams}  
                 // loading={loading}        
             />
 
@@ -91,7 +95,12 @@ function HomePage() {
                 text={item.text}
                 completed={item.completed}
 
-                onEdit = {() => navigate('/edit/'+item.id)}
+                onEdit = {() => navigate('/edit/'+item.id,{
+                    state: {
+                        item
+                    }
+                    
+                })}
                 onComplete={() => toggleCompleteTodo(item.id)}
                 onDelete={() => deleteTodo(item.id)}
                 />
