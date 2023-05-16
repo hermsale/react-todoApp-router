@@ -24,7 +24,6 @@ function EditTodoPage(){
 
     let defaultText;
     let placeholderText;
-    let placeholderText;
 
     if(location.state?.item){
         defaultText = location.state.item.text;
