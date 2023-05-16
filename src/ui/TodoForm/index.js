@@ -8,12 +8,19 @@ function TodoForm(
 
     
     //  guarda el cambio de valor del textarea
-    const [newTodoValue, setNewTodoValue] = React.useState('');
+    let textAreaLocal = props.textArea;
+    
+    // textArea
+    const [newTodoValue, setNewTodoValue] = React.useState(props.textArea || textAreaLocal);
+    console.log('el texto defecto es ', newTodoValue);
+    // console.log(newTodoValue);
     const navigate = useNavigate();
 
     // aqui guardaremos los cambios que haya en el textArea que es lo que enviaremos a la funcion que guardará el Todo
     
+    // setNewTodoValue(textAreaLocal);
 
+    
     const onChange = (event) => {
         setNewTodoValue(event.target.value);        
     }
@@ -24,6 +31,7 @@ function TodoForm(
         // setNewTodoValue('');
         navigate('/');
     }
+
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -37,7 +45,7 @@ function TodoForm(
         setNewTodoValue('');
         }
     }
-
+    
     return (
         <form onSubmit={onSubmit}>
             <label>{props.label}</label>

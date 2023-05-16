@@ -18,19 +18,22 @@ function EditTodoPage(){
     const todo = getTodo(id);
 
     let defaultText;
+    let placeholderText;
 
     if(loading) {
-        defaultText='cargando...';
+        placeholderText='cargando...';
+        defaultText='';
     }else{
+        placeholderText = '';
         defaultText = todo.text;
+        console.log(defaultText);
     }
-
     return(
         <TodoForm
         label="Edita tu Todo"
         submitText="Modificar"
-        placeholder={defaultText}
-
+        placeholder={placeholderText}
+        textArea={defaultText}
         submitEvent = { (text) => editTodo(id, text)}
         />
     )

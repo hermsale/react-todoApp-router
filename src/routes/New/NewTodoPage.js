@@ -12,7 +12,8 @@ function NewTodoPage(){
         <TodoForm
         label="Agrega tu nuevo Todo's"
         submitText="Añadir"
-        textarea="Escribe tu nuevo Todo"
+        placeholder="Escribe tu nuevo Todo"
+        textArea=''
         submitEvent={(text) => addTodo(text)}
         />
     )
