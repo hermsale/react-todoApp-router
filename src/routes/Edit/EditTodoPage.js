@@ -23,7 +23,7 @@ function EditTodoPage(){
     const todo = getTodo(id);
 
     let defaultText;
-    let placeholderText;
+    let placeholderText;    
 
     if(location.state?.item){
         defaultText = location.state.item.text;

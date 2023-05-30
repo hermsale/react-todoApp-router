@@ -20,7 +20,7 @@
     width: 64px;
     border-color: #000000;
     transform: rotate(0);
-    transition: .3s ease;
+    transition: .3s ease;   
   }
   
   .CreateTodoButton:hover {
