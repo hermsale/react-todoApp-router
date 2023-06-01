@@ -1,4 +1,6 @@
  
+Versión definitiva del proyecto iniciado como TodoApp. 
+Se implemento el uso de Router, y se agrego la opción para editar recordatorios.
 URL del proyecto:
 https://hermsale.github.io/react-todoApp-router/
 
