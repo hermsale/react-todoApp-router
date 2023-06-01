@@ -75,6 +75,14 @@ function HomePage() {
             
             // render props 
             onLoading={() => <TodoLoading/>}
+            
+            // {
+            //     loading && 
+            //     (
+            //         <TodoLoading />
+            //     )
+                
+            // }
             onError={() => <TodoError/>}
             onEmptyTodos={() => <EmptyTodos/>}
             onEmptySearchResults = { (searchText) => <p className='onEmptySearchResults__p'>No se encontro resultados para "{searchText}" </p>}

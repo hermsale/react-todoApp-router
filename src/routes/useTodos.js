@@ -3,7 +3,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useSearchParams } from "react-router-dom";
 
 
-// creamos este custom hook para reemplazar al todoContext
+// creamos este custom  para reemplazar al todoContext
 function useTodos(){
 
      // react Hooks personalizado //////////////////////////////////////////////////////////////////////////////
